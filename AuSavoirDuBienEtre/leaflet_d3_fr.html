@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>d3.js with leaflet.js</title>
+
+    <link 
+        rel="stylesheet" 
+        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+    />
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.0/c3.css'/>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.0/c3.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css'/>
+
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+
+    <style>
+    	/*.popup-details {
+	display: none;
+}*/
+.label {
+    font-size: 10px;
+    font-family: sans-serif;
+  }
+
+.legendSize circle {
+    fill: grey;
+    fill-opacity:0.2;
+    stroke: #000;
+
+    /*shape-rendering: crispEdges;*/
+    opacity: 1;
+  }
+ .c3-axis-x{
+ 	display: none !important;
+ }
+
+
+    </style>
+</head>
+<body>
+	<div class="container">
+
+	<div class="row">
+		<nav class="navbar navbar-default"> <div class="container-fluid"> <div class="navbar-header"> <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a href="#" class="navbar-brand">Tableau de bord : données du bonheur tweeter</a> </div> </nav>
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div id="map" style="width: 550px; height: 760px"></div>
+			</div>
+		</div>
+		<div class="col-md-6">
+
+			<div class="panel panel-default">
+			<div class="panel-heading">
+
+			<h3><span id="nb_tweets"></span> tweets</h3>
+			<h5>Indice tweeto-BONHEUR France :<span id="idx_bonheur"></span></h5>
+		</div>
+			<div class="panel-content">
+						<div class="progress" style="margin:10px;">
+			  <div id="pg_positif" class="progress-bar progress-bar-success">
+			  </div>
+			  <div id="pg_negatif" class="progress-bar progress-bar-danger">
+			  </div>
+			</div>
+			</div>
+			</div>
+			<div class="panel panel-default">
+			<div id="linechart" style="width: 500px; height: 300px"></div>
+		</div>
+			<div class="panel panel-default">
+			<div id="barchart" style="width: 500px; height: 300px"></div>
+</div>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript">
+
+ 
+
+
+	d3.json("Geo_data.json", function(json_data) {
+			
+			d3.select("#map").selectAll("*").remove();
+       		 var map = L.map('map').setView([46.449,2.210], 6);
+        mapLink =             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
+            {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,minZoom: 2,
+            }).addTo(map);
+				
+			/* Initialize the SVG layer */
+		map._initPathRoot()    ;
+			var parseDate = d3.timeParse("%Y-%m-%d");
+			json_data.forEach(function(d){
+				d.date=new Date(d["Expr1"]);
+			})
+
+ 			var list_date=d3.map(json_data,function(d) {return d.date;}).keys();
+			
+			var date_range=[list_date[0],list_date[list_date.length-1]];
+			var list_polarity=d3.map(json_data,function(d) {return d["polarity"];}).keys();
+		
+			DrawMap(map,json_data,date_range);
+
+			DrawBarchart(json_data,date_range);
+			DrawLineChart(map,json_data);
+			DrawProgressBar(json_data,date_range);
+
+		
+   		
+    });
+
+function DrawProgressBar(data_current,date_range){
+
+	var data_current2=data_current.filter(function(d) {
+			// console.log(d.date +'>='+ date_range[0])
+    		return (d.date >= date_range[0] && d.date <= date_range[1] );
+  		});
+	console.log(data_current2)
+	var nb_total=d3.sum(data_current2,d=>d["CountOftweet_id"]);
+	console.log(nb_total)
+	d3.select("#nb_tweets").html(nb_total);
+	var data_pg = d3.nest()
+			  .key(function(d) { return d["polarity"]; })
+
+		      .rollup(function(v) { 
+		      	return {
+				    part: d3.sum(v, function(d) { return d["CountOftweet_id"]; })}})
+			  .entries(data_current2);
+	dict_data={};
+	data_pg.forEach(function(d){
+		dict_data[d["key"]]=Math.floor(d["value"]["part"]/nb_total*100);
+		var current=Math.floor(d["value"]["part"]/nb_total*100);
+		d3.select("#pg_"+d["key"]).attr("style","width:"+current+"%;");
+
+	})
+	
+	d3.select("#idx_bonheur").html(dict_data["positif"]);
+}
+function DrawMap(map,data_current,date_range){
+
+		var data_current2=data_current.filter(function(d) {
+    		return (d.date >= date_range[0] && d.date <= date_range[1] );
+  		})
+			d3.select("#map").select("svg").selectAll("*").remove();
+		var svg = d3.select("#map").select("svg"),
+		g = svg.append("g");
+
+				var cities=d3.map(data_current2,function(d) {return d["city name"];}).keys();
+	  		
+	  		 	var data_map = d3.nest()
+				  .key(function(d) { return d["city name"]; })
+				
+			      .rollup(function(v) { 
+			      	return {
+
+					    city_lat: d3.mean(v, function(d) { return parseFloat(d["city_lat"].replace(",",".")); }),
+					    city_long: d3.mean(v, function(d) { return parseFloat(d["city_long"].replace(",",".")); }),
+					    nb_tweets: d3.sum(v, function(d) { return d["CountOftweet_id"]; }),
+					    nb_tweets_pos: d3.sum(v.filter(function(d){return d.polarity == "positif";}), function(d) { return d["CountOftweet_id"]; }),
+					    nb_tweets_neg: d3.sum(v.filter(function(d){return d.polarity == "negatif";}), function(d) { return d["CountOftweet_id"]; }),
+
+					  }; })
+				  .entries(data_current2);
+				  data_map.forEach(function(d) {
+					d.LatLng = new L.LatLng(d["value"].city_lat,
+										d["value"].city_long);
+					d.pos_part=Math.round(d["value"].nb_tweets_pos/d["value"].nb_tweets*100);
+					d.neg_part=Math.round(d["value"].nb_tweets_neg/d["value"].nb_tweets*100);
+				
+				});
+
+	 			var circleScale = d3.scaleLinear()
+	                                 .domain([0, 100])
+	                                 .range([5, 20]);
+				var feature1 = g.selectAll(".pos_cicles")
+					.data(data_map)
+					.enter().append("circle")
+					.attr("class","pos_cicles")
+					.style("stroke", "white")  
+					.style("fill-opacity", .6) 
+					.style("fill","#28b463")
+					.attr("r", d=>circleScale(d.pos_part));
+				var feature2 = g.selectAll(".neg_cicles")
+					.data(data_map)
+					.enter().append("circle")
+					.attr("class","neg_cicles")
+					.style("stroke", "white")  
+					.style("fill-opacity", .6) 
+					.style("fill", "#FF5733")
+					.attr("r", d=>circleScale(d.neg_part));
+				map.on("viewreset", update);
+				update();
+
+				function update() {
+					feature1.attr("transform", 
+					function(d) { 
+						return "translate("+ 
+							map.latLngToLayerPoint(d.LatLng).x +","+ 
+							map.latLngToLayerPoint(d.LatLng).y +")";
+						}
+					),
+					feature2.attr("transform", 
+					function(d) { 
+						return "translate("+ 
+							map.latLngToLayerPoint(d.LatLng).x +","+ 
+							map.latLngToLayerPoint(d.LatLng).y +")";
+						}
+					)
+					// link.attr('d', function(d) {return lineFunction(d.coord)});
+				}
+		}
+
+function DrawBarchart(data_current,date_range){
+	var data_current2=data_current.filter(function(d) {
+			// console.log(d.date +'>='+ date_range[0])
+    		return (d.date >= date_range[0] && d.date <= date_range[1] );
+  		});
+	d3.select("#barchart").selectAll("*").remove();
+	var data_barchart = d3.nest()
+  .key(function(d) { return d["polarity"]; })
+  .key(function(d) { return d["keyword_label"]; })
+
+  .rollup(function(v) { 
+  	return {
+	    nb_tweets: d3.sum(v, function(d) { return d["CountOftweet_id"]; })
+
+	  }; })
+  .entries(data_current2);
+
+	data_barchart2=[];
+	data_barchart.forEach(function(d) {
+	d["values"].forEach(function(v) {
+			
+			data_barchart2.push([v["key"].replace("�", "e").replace("�","e"),v["value"]["nb_tweets"]]);
+		})
+	});
+	data_barchart2.sort(function(a,b) { return a[1]- b[1]});
+		
+	console.log(data_barchart2)
+		var keywords=d3.map(data_current2,function(d) {return d["keyword_label"].replace("�", "e").replace("�","e");}).keys();
+	var keywords = c3.generate({
+		 bindto: '#barchart',
+	    data: {
+	    	columns: data_barchart2,
+	        type: 'bar',
+	        colors: {"pleurer": "#ffebee","deprimer":"#ffcdd2", "rage":"#ef9a9a", "smiley_triste":"#e57373","chagrin":"#ef5350", "penible":"#f44336","malheureux":"#e53935", "melancolie":"#d32f2f", "desastre":"#c62828","morose":"#b71c1c", "mal-etre":"#ff8a80" , "triste":"#ff5252","heureux":"#e0f2f1", "prosperite":"#b2dfdb", "joyeux":"#80cbc4", "bonheur":"#4db6ac", "bien-etre":"#26a69a", "rire":"#009688", "joie":"#00897b", "fier":"#00796b", "content":"#00695c", "comble":"#004d40", "satisfait":"#a7ffeb", "reussite":"#64ffda","epanoui":"#1de9b6","smiley_heureux":"#00bfa5","rejoui":"#69f0ae"}
+	    },
+	    axis: {
+	    x: {
+	       type: 'category',
+	       tick: {
+	      values: ["nb tweets"],
+	      centered: true
+	    }
+	       // categories:'kwd'
+	    },
+	  },tooltip: {
+	  grouped: false,
+	   format: {
+	    title: function (x, index) { return 'Nb tweets '; }
+	  }
+	},
+	    bar: {
+	        width: {
+	            ratio: 0.5 // this makes bar width 50% of length between ticks
+	        }
+	        // or
+	        //width: 100 // this makes bar width 100px
+	    }
+	});
+}
+
+function DrawLineChart(map,data){
+
+	d3.select("#linechart").selectAll("*").remove();
+	var data_linechart = d3.nest()
+  .key(function(d) { return d["Expr1"]; })
+
+  .rollup(function(v) { 
+  	return {
+	    nb_tweets_pos: d3.sum(v.filter(function(d){return d.polarity == "positif";}), function(d) { return d["CountOftweet_id"]; }),
+	    nb_tweets_neg: d3.sum(v.filter(function(d){return d.polarity == "negatif";}), function(d) { return d["CountOftweet_id"]; }),
+
+	  }; })
+  .entries(data);
+	var data_linechart2=[];
+	var dates_list=d3.map(data,function(d) {return d["Expr1"]}).keys();
+	dates_list=["dates"].concat(dates_list);
+	data_linechart2.push(dates_list);
+	data_idx={};
+	idx=1;
+
+	for(k in data_linechart[0]["value"]){
+		data_idx[k]=idx;
+			data_linechart2.push([k]);
+			idx=idx+1;
+	}
+	data_linechart.forEach(function(d){
+		for(k in d["value"]){
+			data_linechart2[data_idx[k]].push(d["value"][k]);			
+		}
+	});
+
+console.log(data_linechart2)
+			var chart = c3.generate({
+			        bindto: '#linechart',
+			        data: {
+			            x: 'dates',
+			            columns:data_linechart2,
+			            types: {
+			            	nb_tweets_neg: 'area-spline',
+			            	nb_tweets_pos: 'area-spline'
+			        	},
+			        	colors: {
+			    			nb_tweets_neg: '#FF5733',
+			    			nb_tweets_pos:'#28b463',
+			  			}
+			        },
+
+			    	axis: {
+			        	x: {
+			            	type: 'timeseries',
+			            	localtime: false,
+			            	tick: {
+			      				show:false
+			    			},
+			            // count: 3
+			        	}
+			    	},
+			    	point: {
+			  			show: false
+					},
+					onrendered: function () { 
+
+						d3.select(".c3-brush").select("rect").attr("stroke","grey").attr("stroke-width","1px");
+			 		},
+			    	subchart: {
+			        	show: true,
+			        	onbrush: function (domain) { 
+
+			        		DrawMap(map,data,domain);
+							DrawBarchart(data,domain);
+							DrawProgressBar(data,domain);
+			        	}
+			    	}
+	});
+}
+
+   			 
+</script>
+</body>
+</html>
