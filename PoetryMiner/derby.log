@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Fri Sep 04 09:53:29 CEST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835): instance a816c00e-014f-9758-97b2-0000004a75e0 
+on database directory G:\STAGE_CIPL\APPLI\PoestryMiner\CorpusDB  with class loader sun.misc.Launcher$AppClassLoader@1f96302 
+Loaded from file:/G:/STAGE_CIPL/APPLI/PoestryMiner/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_31-b13
+user.dir=G:\STAGE_CIPL\APPLI\PoestryMiner
+os.name=Windows 8.1
+os.arch=x86
+os.version=6.3
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

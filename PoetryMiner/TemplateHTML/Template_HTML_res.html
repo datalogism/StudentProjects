@@ -1,0 +1,145 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+   <title>$title</title>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="description" content="Ce document est issu d'une requete sur corpus" />
+   <meta name="keywords" content="Squelette,html,documentation" />
+   <meta name="author" content="Marcellus Wallace" />
+   <style>
+	header{
+		background-color:rgb(202,228,170);
+		background-position: fixed;
+		top : 5em;
+		right : 5 em;
+		left : 5 em; 
+		height: 100px;
+		text-align: right;
+		
+	} 
+	h1{
+		color:white;
+	}
+	h2{
+		color:rgb(6,125,57);
+	}
+	#logo{
+		position:absolute;
+		height: 100px;
+		left:0em;
+		top: 1.3em;
+	}
+	
+	
+	body{
+		right : 5 em;
+		left : 5 em; 
+	}
+	Poeme{
+		 text-align: justify;
+	}
+	table, td, th {
+    border: 1px solid rgb(52,170, 127);
+}
+
+th {
+    background-color: rgb(6,125,57);
+    color: white;
+}
+#td1{
+	width:2.5%;
+
+}
+#td2{
+	width:40%;
+
+}
+#td3{
+	width:5%;
+
+}
+</style>
+</head>
+
+<body>
+	<header>
+	<img id="logo" src="G:\STAGE_CIPL\APPLI\PoestryMiner\Sorties\Fichier_Resultats\LogoPoestryMinerblanc.png"  >
+		<h1>POESTRY MINER</h1>
+		<h1>Rapport d'analyse</h1>
+		
+	</header>	
+	<span id="req">
+		<h2> Requête  :</h2>
+		<p>  
+			date :	$date </br>
+			nombre de mots : $LENGTHQUERY </br>
+			nombre de poèmes total dans les recueils selectionnés : $NBPO </br>
+			nombre de poèmes possédant au moins un n-gramme en commun avant la requête : $nbres </br>
+			nombre de resultats exportés : $nbexport </br>
+			
+		</p> 
+		
+		<p>$queryRecueil<p>
+		<p>$queryPo<p>
+		
+		<h3> Contenu : </h3>
+		<p id="Poeme">$contenuQuery</p>
+	</span>
+	<span id="champQuery">
+	<h2> Champs de la recherche</h2>
+		<ul>   
+			<li>auteur :	$auteur</li>
+			<li>recueils : </li>
+				$recueils
+		</ul>
+	</span>
+	
+	<span id="param" class="floating-box">
+	<h2> Paramètres</h2>
+		<ul>   
+			
+			<li>type requete : $type_requete</li>
+			<li>n-gramme étudié : $n_gram</li>
+			<li>classés selon : $classement </li>
+		</ul>
+	</span>
+	<span id="contraintes" class="floating-box">
+	<h2> Contraintes</h2>
+		<ul>   
+			<li>nombre d'occurences minimum : $nbocc	</li>
+			<li>nombre d'occurences distinctes minimum : $nbdistinct</li>
+			<li>nombre de distances égales à 1 minimum : $nbdist1</li>
+			<li>contrainte sur la distance minimum : $distmin</li>
+			<li>contrainte sur la distance moyenne : $distmoy</li>
+			<li>contrainte sur la distance moyenne : $distmax</li>
+			<li>contrainte sur le pourcentage d'occurences de la requêtes en fonction du nombre de mots du poème courant : $perc1</li>
+			<li>contrainte sur le pourcentage d'occurences distinctes des mots de la requête en fonction du nombre de mots différents dans la requête : $perc2</li>
+		</ul>
+	</span>
+	<span id="antiD" class="floating-box">	
+	<h2> Antidictionnaire utilisé :</h2>
+		<p>$antidic</p>
+	</span>
+<span class="after-box"> 
+   <h1>TABLEAU DE RESULTATS.</h1>
+  <table>
+<tr>
+<th>ID Poème</th><th>ID Recueil</th><th>Titre Recueil</th><th>Numéro</th><th>Titre Poème</th><th>Taux de similarité (%)</th><th>Taux d'efficacité(%)</th><th>Nombre d'occurences</th><th>Nombre d'occurences distinctes</th><th>Nombre de mots</th><th>Distance minimale inter-occurences</th><th>Distance moyenne inter-occurences</th><th>Distance maximale inter-occurences</th><th>Score Tf_Idf</th><th>Score Okapi BM25</th>
+</tr>
+$table_res_content
+</table>
+<h1>DETAILS DES RESULTATS.</h1>
+<table>
+<tr>
+<th id="td1">ID poème</th><th id="td1">ID Recueil</th><th id="td2">Texte requête</th><th id="td2">Texte poème</th><th id="td2">Mots Communs</th>
+</tr>
+$table_compare
+</table>
+</span>
+   <footer>
+			
+   </footer>
+</body>
+
+</html>
