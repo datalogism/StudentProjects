@@ -1,0 +1,19 @@
+@Auteur_nom : Delmotte @Auteur_prenom : Jacques @Auteur_pseudo : Izoard
+@Titre_recueil : Ce manteau de pauvrete
+<Titre_poeme id=$16>null</Titre_poeme>
+dans la tête de l’homme 
+qui a tout oublié 
+il y a un visage effrayant et secret 
+tourné du côté des choses 
+intérieures 
+et qui ne connaît pas la douceur de nos roses 
+dans la tête de l’homme 
+qui a tout oublié 
+où la folie a mis ses housses 
+dans la tête de l’homme 
+qui ne répond plus 
+aux questions qu’on lui pose 
+il y a 
+tout entier 
+celui qu’on n’ose 
+plus nommer

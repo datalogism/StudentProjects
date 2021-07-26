@@ -1,0 +1,5 @@
+@Auteur_nom : Ringwald @Auteur_prenom : Celian @Auteur_pseudo : CR
+@Titre_recueil : Ma soutenance
+<Titre_poeme id=$1>l'heure</Titre_poeme>
+Aujoud'hui c'est l'heure de ma soutenance
+sonne le moment ou mon travail délivre sa teneur sa contenance 

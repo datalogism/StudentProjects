@@ -1,0 +1,192 @@
+@Auteur_nom : Delmotte @Auteur_prenom : Jacques @Auteur_pseudo : Izoard
+<Titre_recueil>Begue, bogue, borgne</Titre_recueil>
+<Titre_poeme id=$1>null</Titre_poeme>
+Bègue escargot. Chili noir. 
+Pied sur paume. Pommeau 
+de buis lisse l’oeil rond, 
+cache un blanc dormeur. 
+Je fuis, cocon laiteux. 
+Cent mains de halage 
+capturent bandit bleu, 
+cent chemins s’envolent 
+vers la mer, vers l’oeil.
+<Titre_poeme id=$2>null</Titre_poeme>
+Bègue orvet qui siffle 
+et tourne autour du pied. 
+Dans l’oeil, l’églantier déchire 
+belle-dame, belle-de-nuit. 
+Sans chat, je parle arabe, 
+aimant tout ce qui, 
+du fond du coeur, 
+vient serrer la langue, 
+assombrir l’oeil.
+<Titre_poeme id=$3>null</Titre_poeme>
+De « bègue » à « muet », le chemin 
+n’est qu’un chemin de mots, 
+de vieux os, de dents cassées. 
+De « bègue » à « bourru », la voix 
+nous fait boire l’eau-de-vie, 
+l’acide verre de dur. 
+De « bègue » à « rogue », l’espace 
+est court, trajet de pierre, 
+de cals et de pals sans défis.
+<Titre_poeme id=$4>null</Titre_poeme>
+Bègue : pigeon sans ailes, 
+genou vermoulu qui, bientôt, 
+tombe en poussières. 
+Moitié de langue avalée, 
+serpe arrachée à l’herbe, 
+feu solitaire lové très long 
+dans l’estomac clos. 
+Parle du village de farine 
+à petits mots cassés.
+<Titre_poeme id=$5>null</Titre_poeme>
+Fomente le feu très sourd 
+qui devient bègue en sa flamme 
+et nous suit dans la nuit. 
+Les doigts se détachent 
+de la main, petits hommes, 
+horde menue qui m’assaille. 
+Le feu se fait fossile 
+et le coeur ne bat plus.
+<Titre_poeme id=$6>null</Titre_poeme>
+J’aime l’albinos bègue 
+et le feu qui court sous la peau, 
+menant chahut, vacarme. 
+Nous parlons de mains serrées, 
+d’épaules et de ruisseaux. 
+Le pain de la bouche, 
+nous l’offrons à tous. 
+Le souffle soufflé 
+nous ramène en vie.
+<Titre_poeme id=$7>null</Titre_poeme>
+Maison est bogue : 
+tas de petits vêtements, 
+capsules, noix, fourchettes, 
+meubles de poupées, carreaux, 
+le tout se serre ici, 
+presque infime, avec moi. 
+Les linges sont roulés 
+dans des boules de papier. 
+Nulle clef n’est utile. 
+On n’entre ni ne sort.
+<Titre_poeme id=$8>null</Titre_poeme>
+Poing est bogue : 
+y couve la révolution ; 
+drapeaux roulés brûlent, 
+cent aiguilles transpercent 
+doigts meurtris, broyés. 
+« Vas-tu parler ? » 
+Bogue d’écrous noirs 
+jetés dans la lumière. 
+Cache la tête, la bogue. 
+Qui raconte l’histoire 
+du petit doigt qui sait tout ?
+<Titre_poeme id=$9>null</Titre_poeme>
+oeuf est bogue : 
+le somnambule y tourne en rond. 
+Nous y aimons, nous y aimons 
+la fille fragile. 
+Rose de verre abandonne 
+le bon jaune assoupi. 
+L’avale tout cru 
+l’avaleur d’oeufs.
+<Titre_poeme id=$10>null</Titre_poeme>
+Sein est bogue : 
+là-bas, nous étions accroupis, 
+sans crocs, sans pitons, 
+grain sans tige, 
+pain de savon, pulpe. 
+Deux doigts caressent 
+le palais de la bogue, 
+le doux tissu, le ventre. 
+On y danse immobile. 
+On y vit endormi.
+<Titre_poeme id=$11>null</Titre_poeme>
+Bogue où tout pique : 
+dès que l’aiguille pénètre 
+sous l’ongle ou sous la peau, 
+je perds souffle et bonheur. 
+Les béquilles de verre 
+ont des rotules de plomb. 
+Durer, maintenir, persister. 
+Je serre le poing, la châtaigne.
+<Titre_poeme id=$12>null</Titre_poeme>
+Maints escaliers de pierre 
+ont les nerfs bleus du froid : 
+les houilleurs endormis 
+sont couchés dans la taille. 
+Je pense au givre, à Gongora. 
+Je pense au pic, à la cheville 
+que le charbon noircit, 
+au temps où les Bégards 
+pénétraient dans ma chambre : 
+pluie de bogues, de billes, de marrons.
+<Titre_poeme id=$13>null</Titre_poeme>
+Borgne attentat des figues 
+comptées, pesées, palpées, 
+jetées dans la cruche d’ombre 
+et qu’un enfant transporte. 
+Pont de mulet précis, 
+dès qu’un coq allume 
+la braise dans mon oeil. 
+Je perds pouvoir, or 
+j’étais poulpe, ouvrier 
+sans les sabots dorés.
+<Titre_poeme id=$14>null</Titre_poeme>
+Le bandeau noir d’un borgne 
+et dans la bogue de l’oeil 
+dorment vingt pirates. 
+J’aurais voulu chanter, 
+jeter grains de mil, de riz. 
+Le tonneau d’herbe sèche 
+roule avec lenteur, et c’est 
+la bonne fille qui jacasse. 
+Un autre hiver, nous vendrons 
+paniers d’osier, pots de miel.
+<Titre_poeme id=$15>null</Titre_poeme>
+Fragment-tissu, borgne-orange. 
+Voici débris de bois, 
+boule qui ne fait qu’un tour. 
+Et toujours l’Entrave, l’Écharde, 
+les ongles piqués de rouille, 
+le difficile passage du dé. 
+Que de souffles opaques ! 
+Le petit hiver apparaît.
+<Titre_poeme id=$16>null</Titre_poeme>
+Tu fus borgne un seul jour ; 
+tu appris alors langue euskarienne, 
+traversant à gué 
+douves, marais, fanges. 
+Voici les couteaux volants 
+qui dénoncent chansonnettes. 
+Les mirabelles et le sang wallon 
+giclent, et le pavé souillé 
+arrête la chevauchée.
+<Titre_poeme id=$17>null</Titre_poeme>
+La bogue me protège : 
+nous y vivons à deux. 
+La bogue nous héberge. 
+Nul héron, nul hérisson 
+ne dort dans nos jambes. 
+Nous avons bien chaud. 
+Nul guerrier bègue ne parle 
+de coups de crosse, de pillards. 
+Et cent épines 
+sont nos soeurs vigilantes.
+<Titre_poeme id=$18>null</Titre_poeme>
+Borgne, et tout éclate : 
+le lait qui se répand, — 
+le chercheur de sureau 
+ne parle plus, ne parle pas —, 
+amadoue la femme 
+qui lave les vitres. 
+Le gaucher veut saisir 
+le miel ou le vent pâle... 
+Mais la moitié du corps 
+est beaucoup trop légère ! 
+Le demi jardin contient 
+doigts, coudes, épaules.
+<Titre_poeme id=$19>null</Titre_poeme>
+Mais toujours la phrase file et fait le tour des mots ; le bègue, ici, rêve de sabots et d’étraves, ou du bruit de la mer. Je vis en lui, puisque je parle à peine et que les mots manquent (glissent, s’échappent, se perdent). Je n’arrive pas à la parole. Infime. Infirme. Dès lors, la bogue accueille en sa rondeur le jeteur de dés (ou celui qui parle seul), ou l’émondeur, ou le crieur dans le désert. Donc, la bogue est nécessaire, cache une autre bogue, l’oeil lisse, ou l’oiseau des aromates. Geneviève Clancy écrit : « On est pâle dans le tombeau d’autrui ». Arrache-t-elle les mots comme je ne sais le faire : « d’houle gomorrhe à hurle mur » ?
+À vrai dire, je dis vrai : c’est le Message borgne qui croit à l’évangile. Le désir du désir devient réalité : Rien ne s’explique. L’inventeur de charades retombe en enfance. Trois mots, trois sésames.

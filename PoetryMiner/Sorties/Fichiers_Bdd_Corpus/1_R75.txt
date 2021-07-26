@@ -1,0 +1,5 @@
+@Auteur_nom : RINGWALD @Auteur_prenom : Célian @Auteur_pseudo : CR
+@Titre_recueil : La soutenance
+<Titre_poeme id=$1>L'heure</Titre_poeme>
+C'est l'heure de la soutenance,
+toute mes condoléances

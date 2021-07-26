@@ -1,0 +1,5 @@
+@Auteur_nom : Delmotte @Auteur_prenom : Jacques @Auteur_pseudo : Izoard
+@Titre_recueil : Ce manteau de pauvrete
+<Titre_poeme id=$9>Le Principe du Poeme</Titre_poeme>
+La beauté des fruits succombe à la chaleur et la fine poussière qui les recouvre rend leur présence intemporelle. Quel peintre ? Quel diable ? me faire croquer dans ces pommes d’argile ! Mais le soleil brûlait la terre et, toute eau tarie, je ne voyais qu’en eux le seul moyen d’étancher ma soif. La méfiance ne se cache pas dans les coeurs purs.
+La souffrance, c’est l’oeuvre parfaite de la pensée, c’est la fraîcheur dans la nuit, la proie de l’esprit saisissant l’aventure, l’inéluctable projet de mort dans l’échéance accordée par la chair...
